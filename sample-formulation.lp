@@ -90,7 +90,8 @@ regbit(T, Reg, Pos, Val) :-
     Reg != eip,
     regval(T, eip, PC),
     regbit(T-1, Reg, Pos, Val),
-    Reg != eax.
+    Reg != eax,
+    not end(PC).
     
 regbit(T, eax, Pos, Val) :-
     time(T),
@@ -99,69 +100,17 @@ regbit(T, eax, Pos, Val) :-
     regbit(T-1, eax, Pos, Val),
     not apicall(PC, _).
     
-regbit(T, eip, Pos, B) :-
+regval(T, eip, PC) :-
     time(T),
-    pos(Pos),
-    bit(B),
-    Pos > 0,
-    regbit(T-1, eip, Pos, B),
-    regbit(T-1, eip, Pos-1, 0),
-    regval(T-1, eip, PC),
+    regval(T-1, eip, PC-1),
     %not jmp(PC, _),
     %not je(PC, _),
-    not jne(PC, _),
+    not jne(PC-1, _),
     %not jg(PC, _),
     %not jge(PC, _),
     %not jl(PC, _),
     %not jle(PC, _),
-    not end(PC).
-regbit(T, eip, Pos, B) :-
-    time(T),
-    pos(Pos),
-    bit(B),
-    Pos > 0,
-    regbit(T-1, eip, Pos, B),
-    regbit(T-1, eip, Pos-1, 1),
-    regbit(T, eip, Pos-1, 1),
-    regval(T-1, eip, PC),
-    %not jmp(PC, _),
-    %not je(PC, _),
-    not jne(PC, _),
-    %not jg(PC, _),
-    %not jge(PC, _),
-    %not jl(PC, _),
-    %not jle(PC, _),
-    not end(PC).
-regbit(T, eip, Pos, B) :-
-    time(T),
-    pos(Pos),
-    bit(B),
-    Pos > 0,
-    regbit(T-1, eip, Pos, B^1),
-    regbit(T-1, eip, Pos-1, 1),
-    regbit(T, eip, Pos-1, 0),
-    regval(T-1, eip, PC),
-    %not jmp(PC, _),
-    %not je(PC, _),
-    not jne(PC, _),
-    %not jg(PC, _),
-    %not jge(PC, _),
-    %not jl(PC, _),
-    %not jle(PC, _),
-    not end(PC).
-regbit(T, eip, 0, B) :-
-    time(T),
-    bit(B),
-    regbit(T-1, eip, Pos, B^1),
-    regval(T-1, eip, PC),
-    %not jmp(PC, _),
-    %not je(PC, _),
-    not jne(PC, _),
-    %not jg(PC, _),
-    %not jge(PC, _),
-    %not jl(PC, _),
-    %not jle(PC, _),
-    not end(PC).
+    not end(PC-1).
     
 regbit(T, eip, Pos, B) :-
     time(T),
@@ -179,7 +128,14 @@ regbit(T, eip, Pos, B) :-
     PC / (2 ** Pos) & 1 = B,
     flg(T-1, z, 1).
 
+apicall_res(T, Pos, 0) :-
+    Pos > 8,
+    time(T),
+    pos(Pos),
+    regval(T, eip, PC),
+    apicall(PC, get_something).
 1 { apicall_res(T, Pos, B):bit(B) } 1 :-
+    Pos <= 8,
     time(T),
     pos(Pos),
     regval(T, eip, PC),
@@ -204,3 +160,4 @@ malware_sig :- malware_sig_eicar(T), time(T).
 %#show malware_sig_eicar/1.
 %#show apicall_res/3.
 #show regval/3.
+#show apicall_res/3.

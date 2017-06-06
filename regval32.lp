@@ -1,4 +1,11 @@
 
+regbit(T, Reg, Pos, B) :-
+    time(T),
+    register(Reg),
+    pos(Pos),
+    regval(T, Reg, Val),
+    Val / (2 ** Pos) & 1 = B.
+
 regval(T, Reg, Val) :-
     time(T),
     register(Reg),
