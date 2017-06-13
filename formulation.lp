@@ -3,38 +3,49 @@
 
 register(eax;ebx;ecx;edx;esi;edi;edp;esp;eip;imm;cmp).
 flag(n;z;p).
+apitype_value(get_something).
+apitype_alloc(alloc_something).
 pos(0..intlen-1).
 time(0..maxtime).
+pc(0..maxpc).
 flg(0, z).
     
 :- flg(T, F1), flg(T, F2), F1 != F2, flag(F1), flag(F2), time(T).
 
+%% Generalizations
+cmp(T) :- time(T), pcat(T, PC), cmp_imm(PC, _, _).
+imm(T) :- time(T), pcat(T, PC), cmp_imm(PC, _, _).
+    
 %% Registers maintain value unless acted upon
 regbit(T, Reg, Pos) :-
     time(T),
     register(Reg),
     pos(Pos),
-    bit(B),
     regbit(T-1, Reg, Pos),
     pcat(T, PC),
     not end(PC),
     not sub(PC, _, _, Reg),
     Reg != eip,
-    %Reg != eax,
+    Reg != eax,
     Reg != imm.
 regbit(T, imm, Pos) :-
     time(T),
     pos(Pos),
-    bit(B),
     regbit(T-1, imm, Pos),
     pcat(T, PC),
     not end(PC),
-    not cmp_imm(PC, _, _, _).
+    not imm(T).
+regbit(T, eax, Pos) :-
+    time(T),
+    pos(Pos),
+    regbit(T-1, eax, Pos),
+    pcat(T, PC),
+    not end(PC),
+    not apicall(PC, _).
     
 %% PC advances each time step
 regbit(T+1, eip, 0) :-
     time(T),
-    bit(B),
     not regbit(T, eip, 0).
 regbit(T+1, eip, Pos) :-
     time(T),
@@ -52,15 +63,13 @@ regbit(T+1, eip, Pos) :-
     time(T),
     pos(Pos),
     Pos > 0,
-    bit(B),
     not regbit(T, eip, Pos),
     not regbit(T+1, eip, Pos-1),
     regbit(T, eip, Pos-1).
     
 
 % Comparisons    
-cmp(T) :- time(T), pcat(T, PC), cmp_imm(PC, _, _, _).
-    
+
 %% Store value from cmp_imm in imm
 regbit(T, imm, Pos) :-
     time(T),
@@ -69,7 +78,7 @@ regbit(T, imm, Pos) :-
     cmp_imm(PC, _, Pos).
 
 %% Reg - imm -> cmp
-sub(PC, Reg, imm, cmp) :- cmp_imm(PC, Reg, _, _).
+sub(PC, Reg, imm, cmp) :- cmp_imm(PC, Reg, _).
 
 %% Subtraction
 regbit(T, Res, Pos) :-
@@ -145,6 +154,14 @@ carry(T, Pos+1) :-
     not regbit(T, Reg1, Pos),
     not regbit(T, Reg2, Pos),
     carry(T, Pos).
+    
+%% API Calls: single value
+0 { regbit(T, eax, Pos) } 1 :-
+    time(T),
+    pos(Pos),
+    pcat(T, PC),
+    apicall(PC, Call),
+    apitype_value(Call).
     
 %% Flags
 flg(T, n) :- 

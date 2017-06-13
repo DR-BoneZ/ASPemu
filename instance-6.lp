@@ -1,7 +1,7 @@
 
-#const maxtime = 3.
+#const maxtime = 6.
+#const maxpc = 5.
 
-cmp_imm(1, eax, 1..intlen-1, 0).
-cmp_imm(1, eax, 0, 1).
-end(2).
-#show flg/2.
+apicall(1, get_something).
+cmp_imm(2, eax, 0).
+end(maxpc).
