@@ -16,6 +16,29 @@ flg(0, Flag, 0) :- flag(Flag).
 cmp(PC) :- cmp_imm(PC, Reg, Val), register(Reg), imm8(Val).
 %cmp(PC) :- cmp_reg(PC, Reg1, Reg2), register(Reg1), register(Reg2).
     
+%ge_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), gt_reg_imm(T, Reg, Val).
+%ge_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), eq_reg_imm(T, Reg, Val).
+%le_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), gt_reg_imm(T, Reg, Val).
+%le_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), eq_reg_imm(T, Reg, Val).
+%ne_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), gt_reg_imm(T, Reg, Val).
+%ne_reg_imm(T, Reg, Val) :- time(T), register(Reg), imm8(Val), lt_reg_imm(T, Reg, Val).
+
+%gt_reg_imm(T, Reg, Val) :-
+%    time(T),
+%    register(Reg),
+%    imm8(Val),
+%    regbit(T, Reg, Pos, 1),
+%    pos(Pos),
+%    Pos > @bitlen(Val).
+%gt_reg_imm(T, Reg, Val) :-
+%    time(T),
+%    register(Reg),
+%    imm8(Val),
+%    regbit(T, Reg, Pos, 1),
+%    pos(Pos),
+%    Pos = @bitlen(Val),
+%    regbit(T, Reg, Pos2, 
+
 flg(T, Flag, Val) :-
     time(T),
     flag(Flag),
@@ -128,14 +151,15 @@ regbit(T, eip, Pos, B) :-
     PC / (2 ** Pos) & 1 = B,
     flg(T-1, z, 1).
 
+%% Right now, 32 bits takes forever, so currently only allowing 8 bits of entropy.
 apicall_res(T, Pos, 0) :-
-    Pos > 8,
+    Pos > 7,
     time(T),
     pos(Pos),
     regval(T, eip, PC),
     apicall(PC, get_something).
 1 { apicall_res(T, Pos, B):bit(B) } 1 :-
-    Pos <= 8,
+    Pos <= 7,
     time(T),
     pos(Pos),
     regval(T, eip, PC),
@@ -157,6 +181,11 @@ malware_sig :- malware_sig_eicar(T), time(T).
     
 %:- not malware_sig.
     
+%#script(python)
+%def bitlen(x):
+%    return int(x).bit_length()
+%#end.
+
 %#show malware_sig_eicar/1.
 %#show apicall_res/3.
 #show regval/3.

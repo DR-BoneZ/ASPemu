@@ -1,4 +1,7 @@
 
+pcat(T, PC) :-
+    regval(T, eip, PC).
+
 regval(T, Reg, Val) :-
     time(T),
     register(Reg),
