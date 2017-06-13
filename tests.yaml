@@ -1,0 +1,27 @@
+
+Definitions:
+    emu: {filename: sample-formulation.lp}
+    inst: {filename: instance-2.lp}
+    both: {group: [emu, inst]}
+    
+Test full program on instance:
+    Modules: both
+    Expect: SAT
+        
+Test PC:
+    Modules: both
+    inline: |
+        advance :-
+            regval(1, eip, 1),
+            regval(0, eip, 0).
+        :- not advance.
+    Expect: SAT
+        
+Test cmp:
+    Modules: both
+    inline: |
+        flagne :-
+            flg(3, z, 1),
+            flg(3, n, 0),
+            flg(3, p, 0).
+    Expect: SAT
