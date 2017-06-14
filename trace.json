@@ -8,7 +8,7 @@
       "Witnesses": [
         {
           "Value": [
-            "apicall_ret(1,1)", "apicall_ret(5,5)", "apicall_res(1,0)", "malware_sig_eicar(4,4)"
+            "apicall_ret(1,1)", "apicall_ret(3,3)", "apicall_res(3,30)", "malware_sig_eicar(10,10)"
           ]
         }
       ]
@@ -21,10 +21,10 @@
   },
   "Calls": 1,
   "Time": {
-    "Total": 0.220,
-    "Solve": 0.003,
-    "Model": 0.003,
+    "Total": 0.444,
+    "Solve": 0.008,
+    "Model": 0.008,
     "Unsat": 0.000,
-    "CPU": 0.203
+    "CPU": 0.422
   }
 }

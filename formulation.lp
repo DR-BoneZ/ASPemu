@@ -127,6 +127,16 @@ regbit(T, imm, Pos) :-
 
 %% Reg - imm -> cmp
 cmp(PC, Reg, imm, cmp) :- cmp_imm(PC, Reg, _).
+    
+%% MOV
+regbit(T+1, Res, Pos) :-
+    time(T),
+    register(Res),
+    pos(Pos),
+    pcat(T, PC),
+    mov(PC, Reg, Res),
+    register(Reg),
+    regbit(T, Reg, Pos).
 
 %% Subtraction
 regbit(T, Res, Pos) :-
@@ -274,6 +284,79 @@ carry(T, Pos+1) :-
     register(Reg2),
     not regbit(T, Reg1, Pos),
     not regbit(T, Reg2, Pos),
+    carry(T, Pos).
+    
+%% Addition
+regbit(T+1, Res, Pos) :-
+    time(T),
+    register(Res),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, Res),
+    register(Reg1),
+    register(Reg2),
+    regbit(T, Reg1, Pos),
+    not regbit(T, Reg2, Pos),
+    not carry(T, Pos).
+regbit(T+1, Res, Pos) :-
+    time(T),
+    register(Res),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, Res),
+    register(Reg1),
+    register(Reg2),
+    not regbit(T, Reg1, Pos),
+    regbit(T, Reg2, Pos),
+    not carry(T, Pos).
+regbit(T+1, Res, Pos) :-
+    time(T),
+    register(Res),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, Res),
+    register(Reg1),
+    register(Reg2),
+    regbit(T, Reg1, Pos),
+    regbit(T, Reg2, Pos),
+    carry(T, Pos).
+regbit(T+1, Res, Pos) :-
+    time(T),
+    register(Res),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, Res),
+    register(Reg1),
+    register(Reg2),
+    not regbit(T, Reg1, Pos),
+    not regbit(T, Reg2, Pos),
+    carry(T, Pos).
+carry(T, Pos+1) :-
+    time(T),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, _),
+    register(Reg1),
+    register(Reg2),
+    regbit(T, Reg1, Pos),
+    regbit(T, Reg2, Pos).
+carry(T, Pos+1) :-
+    time(T),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, _),
+    register(Reg1),
+    register(Reg2),
+    regbit(T, Reg1, Pos),
+    carry(T, Pos).
+carry(T, Pos+1) :-
+    time(T),
+    pos(Pos),
+    pcat(T, PC),
+    add(PC, Reg1, Reg2, _),
+    register(Reg1),
+    register(Reg2),
+    regbit(T, Reg2, Pos),
     carry(T, Pos).
     
 %% API Calls: single value

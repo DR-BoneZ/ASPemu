@@ -43,3 +43,4 @@ jge_reg(0, 0) :- a=b.
 eicar(0) :- a=b.
 add(0, eax, eax, eax) :- a=b.
 sub(0, eax, eax, eax) :- a=b.
+mov(0, eax, eax) :- a=b.
