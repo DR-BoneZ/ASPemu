@@ -1,0 +1,14 @@
+#!/bin/bash
+
+filename="$1"
+timesteps="$2"
+
+if [ "$filename" = "" ]; then
+    echo "usage: aspemu <filename> [timesteps]"
+fi
+python prep-instance.py "$filename" "$timesteps"
+if [ "$?" -ne "0" ]; then
+    exit
+fi
+clingo formulation.lp instance.lp pcat32.lp find-malware.lp diagnostics.lp -W none --outf=2 --time-limit=60 > trace.json
+python visualizer.py

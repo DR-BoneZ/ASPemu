@@ -1,27 +1,81 @@
 
 Definitions:
-    emu: {filename: sample-formulation.lp}
-    inst: {filename: instance-2.lp}
+    emu: {filename: formulation.lp}
+    inst: {filename: instance.lp}
     both: {group: [emu, inst]}
     
-Test full program on instance:
+Test Full Program On Instance:
     Modules: both
     Expect: SAT
         
-Test PC:
-    Modules: both
+Test PC Advance:
+    Modules: emu
     inline: |
+        #const maxpc = 2.
+        #const maxtime = 2.
+        end(2).
         advance :-
-            regval(1, eip, 1),
-            regval(0, eip, 0).
+            pcat(1, 1),
+            pcat(0, 0).
         :- not advance.
     Expect: SAT
         
-Test cmp:
-    Modules: both
+Test Z Flag CMP:
+    Modules: emu
     inline: |
-        flagne :-
-            flg(3, z, 1),
-            flg(3, n, 0),
-            flg(3, p, 0).
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, zero).
+        end(2).
+        :- not flg(2, z).
+    Expect: SAT
+        
+Test NZ Flag CMP:
+    Modules: emu
+    inline: |
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, 0).
+        end(2).
+        :- flg(2, z).
+    Expect: SAT
+        
+Test S Flag CMP:
+    Modules: emu
+    inline: |
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, 0).
+        end(2).
+        :- not flg(2, s).
+    Expect: SAT
+        
+Test NS Flag CMP:
+    Modules: emu
+    inline: |
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, 0..intlen-1).
+        end(2).
+        :- flg(2, s).
+    Expect: SAT
+        
+Test C Flag CMP:
+    Modules: emu
+    inline: |
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, 0).
+        end(2).
+        :- not flg(2, c).
+    Expect: SAT
+        
+Test NC Flag CMP:
+    Modules: emu
+    inline: |
+        #const maxtime = 2.
+        #const maxpc = 2
+        cmp_imm(1, eax, 0).
+        end(2).
+        :- flg(2, c).
     Expect: SAT

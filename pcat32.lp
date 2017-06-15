@@ -3,7 +3,7 @@ toolong(T, Reg) :-
     register(Reg),
     regbit(T, Reg, Pos),
     pos(Pos),
-    Pos >= 7.
+    Pos >= 4.
 
 pcat(T, 0) :-
     time(T),
@@ -12,9 +12,6 @@ pcat(T, 0) :-
     not regbit(T, eip, 1),
     not regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 1) :-
     time(T),
@@ -23,9 +20,6 @@ pcat(T, 1) :-
     not regbit(T, eip, 1),
     not regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 2) :-
     time(T),
@@ -34,9 +28,6 @@ pcat(T, 2) :-
     regbit(T, eip, 1),
     not regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 3) :-
     time(T),
@@ -45,9 +36,6 @@ pcat(T, 3) :-
     regbit(T, eip, 1),
     not regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 4) :-
     time(T),
@@ -56,9 +44,6 @@ pcat(T, 4) :-
     not regbit(T, eip, 1),
     regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 5) :-
     time(T),
@@ -67,9 +52,6 @@ pcat(T, 5) :-
     not regbit(T, eip, 1),
     regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 6) :-
     time(T),
@@ -78,9 +60,6 @@ pcat(T, 6) :-
     regbit(T, eip, 1),
     regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 7) :-
     time(T),
@@ -89,9 +68,6 @@ pcat(T, 7) :-
     regbit(T, eip, 1),
     regbit(T, eip, 2),
     not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 8) :-
     time(T),
@@ -100,9 +76,6 @@ pcat(T, 8) :-
     not regbit(T, eip, 1),
     not regbit(T, eip, 2),
     regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 9) :-
     time(T),
@@ -111,9 +84,6 @@ pcat(T, 9) :-
     not regbit(T, eip, 1),
     not regbit(T, eip, 2),
     regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 10) :-
     time(T),
@@ -122,9 +92,6 @@ pcat(T, 10) :-
     regbit(T, eip, 1),
     not regbit(T, eip, 2),
     regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
     not toolong(T, eip).
 pcat(T, 11) :-
     time(T),
@@ -133,711 +100,4 @@ pcat(T, 11) :-
     regbit(T, eip, 1),
     not regbit(T, eip, 2),
     regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 12) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 13) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 14) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 15) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 16) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 17) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 18) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 19) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 20) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 21) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 22) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 23) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 24) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 25) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 26) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 27) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 28) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 29) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 30) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 31) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 32) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 33) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 34) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 35) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 36) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 37) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 38) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 39) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 40) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 41) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 42) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 43) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 44) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 45) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 46) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 47) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 48) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 49) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 50) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 51) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 52) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 53) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 54) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 55) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 56) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 57) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 58) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 59) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 60) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 61) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 62) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 63) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    regbit(T, eip, 4),
-    regbit(T, eip, 5),
-    not regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 64) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 65) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 66) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 67) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 68) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 69) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 70) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 71) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    regbit(T, eip, 2),
-    not regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 72) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 73) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    not regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 74) :-
-    time(T),
-    pc(PC),
-    not regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
-    not toolong(T, eip).
-pcat(T, 75) :-
-    time(T),
-    pc(PC),
-    regbit(T, eip, 0),
-    regbit(T, eip, 1),
-    not regbit(T, eip, 2),
-    regbit(T, eip, 3),
-    not regbit(T, eip, 4),
-    not regbit(T, eip, 5),
-    regbit(T, eip, 6),
     not toolong(T, eip).
