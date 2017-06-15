@@ -12,3 +12,4 @@ apicall_res(T, Pos) :-
 #show apicall_ret/2.
 #show apicall_res/2.
 #show malware_sig_eicar/2.
+#show malware_sig_self_edit/2.

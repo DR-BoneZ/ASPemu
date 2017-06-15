@@ -70,6 +70,7 @@ regbit(T, Reg, Pos) :-
     pcat(T, PC),
     not end(PC),
     not sub(PC, _, _, Reg),
+    not add(PC, _, _, Reg),
     Reg != eip,
     Reg != eax,
     Reg != imm,
