@@ -1,0 +1,28 @@
+<h1>Conditional Malware Detection Through Emulation in ASP</h1>
+<h4>By Aiden McClelland</h4>
+<p>This project is a prototype for a malware detector using ASP.<br>
+A full description of this project can be found in <a href="ASP_Report_AidenMcClelland.pdf">this report</a>.<br>
+To try it out, download <a href="deployed.zip">this zip file</a>.<br>
+Once you have extracted the file, <pre>cd</pre> into it and run <pre>./aspemu instance-6.ins</pre>.<br>
+If this runs without errors, you are good to go! You can now write new problem instances and test them out.<br>
+If not, it is likely you do not meet all dependencies for the project.<br></p>
+
+<h3>Dependencies</h3>
+<ul>
+<li>Python >= 3.4.3</li>
+<li>clingo >= 5.1.0</li>
+</ul>
+<br>
+<br>
+<pre>usage: ./aspemu <filename> [timesteps]</pre>
+If timesteps are not provided it will default to twice the maximum PC of the problem instance.<br><br><br>
+
+<h3>INS Format</h3>
+<ul>
+<li>Precede your program with the string <pre>.code</pre> and nothing else on the line. Anything before this will be ignored.</li>
+<li>Start each line with the PC of the current instruction in HEX with the 0x prefix, followed by a single space.</li>
+<li>Instructions are to be written in all caps, and immediate values are to be written in unsigned HEX with the 0x prefix.</li>
+<li>The only API Calls supported as of now are "GetSomething" (a placeholder) and "Exit".</li>
+</ul>
+
+<p>This project is in it's early stages, and progress is ongoing. If you have any questions, contact me at <a href="mailto:aiden.k.mcclelland@gmail.com">aiden.k.mcclelland@gmail.com</a>.
